@@ -102,6 +102,57 @@ SPOTIFY_PLAYLIST_ID=3RCL6s6xJasw4SydPI1j09
 
 ---
 
+## 5b — YouTube setup (optional)
+
+YouTube integration is **disabled by default**. All four `YOUTUBE_*` variables must
+be present for it to activate. If any are missing the run silently skips YouTube.
+
+### Create a Google Cloud OAuth 2.0 credential
+
+1. Go to <https://console.cloud.google.com/> → **APIs & Services → Credentials**.
+2. Click **Create credentials → OAuth client ID**.
+3. Application type: **Web application**.
+4. Add `http://localhost:8889/callback` to **Authorized redirect URIs**.
+5. Download / note the **Client ID** and **Client Secret**.
+6. Enable the **YouTube Data API v3** under *APIs & Services → Library*.
+
+### Get your YouTube refresh token
+
+```bash
+# Add YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET to .env first
+npm run get-youtube-token
+```
+
+The helper opens a Google sign-in page. After you click **Allow**, your
+`YOUTUBE_REFRESH_TOKEN` is printed in the terminal.
+
+> **Tip:** If Google returns no `refresh_token`, revoke the app access at
+> <https://myaccount.google.com/permissions> and re-run the helper —
+> the `prompt=consent` flag will force a fresh grant.
+
+### Create the YouTube playlist
+
+1. Open YouTube, create a new empty playlist, and set its visibility to *Public* or *Unlisted*.
+2. The playlist ID is the `list=` parameter in its URL:
+   `https://www.youtube.com/playlist?list=`**`PLxxxxxx`**
+3. Set `YOUTUBE_PLAYLIST_ID` in `.env`.
+
+### Final `.env` with YouTube enabled
+
+```dotenv
+SPOTIFY_CLIENT_ID=abc123
+SPOTIFY_CLIENT_SECRET=def456
+SPOTIFY_REFRESH_TOKEN=AQD...
+SPOTIFY_PLAYLIST_ID=3RCL6s6xJasw4SydPI1j09
+
+YOUTUBE_CLIENT_ID=123456.apps.googleusercontent.com
+YOUTUBE_CLIENT_SECRET=GOCSPX-...
+YOUTUBE_REFRESH_TOKEN=1//0e...
+YOUTUBE_PLAYLIST_ID=PLxxxxxx
+```
+
+---
+
 ## 6 — Run manually
 
 ```bash

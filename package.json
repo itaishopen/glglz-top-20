@@ -8,6 +8,7 @@
     "update-playlist": "ts-node src/index.ts",
     "scheduler": "ts-node src/scheduler.ts",
     "get-token": "ts-node scripts/get-refresh-token.ts",
+    "get-youtube-token": "ts-node scripts/get-youtube-token.ts",
     "install-browsers": "playwright install chromium"
   },
   "dependencies": {

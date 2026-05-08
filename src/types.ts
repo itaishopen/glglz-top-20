@@ -27,7 +27,25 @@ export interface PlaylistItem {
   } | null;
 }
 
+export interface YouTubeVideo {
+  videoId: string;
+  title: string;
+  playlistItemId?: string;
+}
+
+export interface YouTubeTokenResponse {
+  access_token: string;
+  expires_in: number;
+  token_type: string;
+}
+
+export interface YouTubeUpdateSummary {
+  added: YouTubeVideo[];
+  skipped: Song[];
+}
+
 export interface UpdateSummary {
   added: SpotifyTrack[];
   skipped: Song[];
+  youtube?: YouTubeUpdateSummary;
 }
