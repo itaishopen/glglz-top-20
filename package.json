@@ -1,0 +1,28 @@
+{
+  "name": "glglz-top-20",
+  "version": "1.0.0",
+  "description": "Weekly Spotify playlist updater — Galgalatz Top 20",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "update-playlist": "ts-node src/index.ts",
+    "scheduler": "ts-node src/scheduler.ts",
+    "get-token": "ts-node scripts/get-refresh-token.ts",
+    "install-browsers": "playwright install chromium"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "node-cron": "^3.0.3",
+    "playwright": "^1.59.1",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "@types/node-cron": "^3.0.11",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
